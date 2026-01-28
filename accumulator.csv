@@ -1,0 +1,11 @@
+Accumulator_ID,Total_Odds,Stake,Expected_Return,Selections_Count,Matches_Included,Confidence,Risk_Level
+ACCU_01,5.42,100,542,6,"Napoli O1.5, Napoli 1H O0.5, Paris O1.5, Paris BTTS, PSV O2.5, PSV BTTS",High,Medium-High
+ACCU_02,6.18,100,618,7,"Napoli BTTS, Napoli 1H O0.5, Paris O1.5, Paris 1H O0.5, PSV O2.5, PSV BTTS, PSV PPDA>15",Medium-High,High
+ACCU_03,7.25,100,725,8,"Napoli O1.5, Napoli BTTS, Paris O1.5, Paris BTTS, PSV O2.5, PSV BTTS, PSV O4.0, Paris Corners O4.5",Medium,High
+ACCU_04,8.91,100,891,9,"Napoli 1H O0.5, Napoli PPDA>17, Paris O1.5, Paris BTTS, Paris 1H O0.5, PSV O2.5, PSV BTTS, PSV PPDA>15, PSV O4.0",Medium,Very High
+ACCU_05,4.86,100,486,5,"Napoli O1.5, Paris O1.5, PSV O2.5, Napoli BTTS, PSV BTTS",High,Medium
+ACCU_06,10.34,100,1034,10,"All Napoli markets (4), All Paris markets (3), All PSV markets (3)",Low,Very High
+ACCU_07,6.73,100,673,7,"Napoli O1.5, Napoli 1H O0.5, Paris O1.5, Paris BTTS, PSV O2.5, PSV BTTS, Napoli PPDA>17",Medium-High,High
+ACCU_08,9.15,100,915,8,"Napoli BTTS, Paris O1.5, Paris BTTS, Paris 1H O0.5, PSV O2.5, PSV BTTS, PSV O4.0, PSV PPDA>15",Medium,High
+ACCU_09,5.12,100,512,6,"Napoli O1.5, Paris O1.5, PSV O2.5, Paris Corners O4.5, PSV PPDA>15, Napoli 1H O0.5",Medium-High,Medium
+ACCU_10,7.84,100,784,7,"Napoli BTTS, Paris BTTS, PSV BTTS, Napoli 1H O0.5, Paris 1H O0.5, PSV O2.5, PSV O4.0",Medium,High

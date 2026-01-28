@@ -1,0 +1,404 @@
+/* 
+ * 298 ULTRA-PREMIUM 10/10 DESIGN SYSTEM - FINAL POLISH
+ */
+
+:root {
+    /* Color Palette */
+    --bg-black: #050a12;
+    --bg-navy: #0a1120;
+    --brand-blue: #00d4ff;
+    --brand-green: #00ff9d;
+    --brand-gold: #ffcc00;
+    --brand-red: #ff4d4d;
+
+    /* Neon Glows */
+    --glow-blue: rgba(0, 212, 255, 0.25);
+    --glow-green: rgba(0, 255, 157, 0.25);
+    --glow-gold: rgba(255, 204, 0, 0.25);
+    --glow-red: rgba(255, 77, 77, 0.25);
+
+    /* Glassmorphism Specs */
+    --glass-bg: rgba(15, 25, 45, 0.85);
+    /* Darker, more contrast */
+    --glass-bg-accent: rgba(255, 255, 255, 0.08);
+    /* Brighter adaptive color */
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-border-bright: rgba(255, 255, 255, 0.25);
+
+    /* Typography Visibility - UPPED FOR 10/10 READABILITY */
+    --text-main: #ffffff;
+    --text-muted: #e2e8f0;
+    /* Close to white now */
+    --text-dim: #cbd5e1;
+    /* Still very readable */
+
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-black);
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 70%),
+        radial-gradient(circle at 100% 100%, rgba(0, 255, 157, 0.08) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 Q 250 50 500 100 T 1000 100' stroke='rgba(0, 212, 255, 0.05)' stroke-width='1' fill='transparent'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Master Glassmorphism Card */
+.ultra-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow:
+        0 10px 40px -10px rgba(0, 0, 0, 0.6),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.ultra-glass:hover {
+    border-color: var(--glass-border-bright);
+    background: rgba(15, 25, 45, 0.95);
+}
+
+/* Typography Utilities */
+.fw-800 {
+    font-weight: 800;
+}
+
+.tracking-tight {
+    letter-spacing: -0.02em;
+}
+
+.tracking-widest {
+    letter-spacing: 0.1em;
+}
+
+.text-cyan {
+    color: var(--brand-blue);
+}
+
+.text-neon-green {
+    color: var(--brand-green);
+}
+
+/* Visibility Fixes */
+.text-muted {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+}
+
+.text-dim {
+    color: var(--text-dim) !important;
+    opacity: 1 !important;
+}
+
+.opacity-50 {
+    opacity: 0.8 !important;
+    color: var(--text-dim) !important;
+}
+
+/* Background Utility Classes - Adaptive */
+.bg-white {
+    background-color: var(--glass-bg-accent) !important;
+    color: var(--text-main) !important;
+}
+
+.bg-light {
+    background-color: var(--glass-bg-accent) !important;
+    color: var(--text-main) !important;
+}
+
+/* Horizontal Reasoning Path */
+.path-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.path-line {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-blue), var(--brand-green));
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.path-node {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--bg-navy);
+    border: 2px solid var(--brand-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 0 20px var(--glow-blue);
+    position: relative;
+}
+
+.path-node.active {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 25px var(--glow-green);
+}
+
+.node-label {
+    position: absolute;
+    top: 90px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Sidebar Bet Cards */
+.bet-card-v2 {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.bet-card-v2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+}
+
+.bet-card-safe::before {
+    background: var(--brand-green);
+    box-shadow: 0 0 10px var(--glow-green);
+}
+
+.bet-card-mid::before {
+    background: var(--brand-gold);
+    box-shadow: 0 0 10px var(--glow-gold);
+}
+
+.bet-card-risk::before {
+    background: var(--brand-red);
+    box-shadow: 0 0 10px var(--glow-red);
+}
+
+/* SVG Progress Circle */
+.progress-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.progress-circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 10;
+}
+
+.progress-circle-val {
+    fill: none;
+    stroke: var(--brand-green);
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s ease;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    .path-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .path-line {
+        display: none;
+    }
+}
+
+/* --- Comprehensive Analysis Components --- */
+
+:root {
+    --terminal-bg: #04080e;
+    --terminal-border: #1a2a44;
+}
+
+/* Analysis Terminal */
+.analysis-terminal {
+    background: var(--terminal-bg);
+    border: 1px solid var(--terminal-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.85rem;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    background-image: radial-gradient(circle at top right, rgba(0, 212, 255, 0.05), transparent 40%);
+}
+
+.terminal-header {
+    border-bottom: 1px solid var(--terminal-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-red {
+    background: #ff5f56;
+}
+
+.dot-yellow {
+    background: #ffbd2e;
+}
+
+.dot-green {
+    background: #27c93f;
+}
+
+.terminal-content {
+    color: #a9b7c6;
+    line-height: 1.6;
+}
+
+.terminal-success {
+    color: var(--neon-green);
+    font-weight: 600;
+}
+
+.terminal-keyword {
+    color: var(--brand-blue);
+}
+
+/* Insights Grid */
+.insight-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.insight-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(0, 212, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Reasoning Stream - Vertical Version */
+.reasoning-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.stream-node {
+    position: relative;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--terminal-border);
+    transition: var(--transition);
+}
+
+.stream-node.active {
+    border-left-color: var(--brand-green);
+    background: rgba(0, 255, 157, 0.05);
+    border-color: rgba(0, 255, 157, 0.1);
+}
+
+.stream-node::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 1.75rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg-navy);
+    border: 2px solid var(--terminal-border);
+    z-index: 2;
+}
+
+.stream-node.active::before {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 10px var(--glow-green);
+}
+
+.stream-line {
+    position: absolute;
+    left: 0.65rem;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    width: 2px;
+    background: var(--terminal-border);
+    z-index: 1;
+}
+
+/* Animation for Terminal Cursor */
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2em;
+    background: var(--brand-blue);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+}
