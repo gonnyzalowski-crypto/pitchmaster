@@ -1,0 +1,37 @@
+# Deploy static site (repo root) to GitHub Pages
+# - uploads the repository root as the Pages artifact
+# - deploys the artifact using actions/deploy-pages@v1
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  upload-pages-artifact:
+    name: Upload Pages artifact
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload site to GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Publish the repository root. Change this if you want to publish only a subdirectory.
+          path: ./
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: upload-pages-artifact
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy artifact to GitHub Pages
+        uses: actions/deploy-pages@v1
