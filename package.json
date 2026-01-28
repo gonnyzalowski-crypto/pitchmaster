@@ -1,0 +1,19 @@
+{
+    "name": "pitchmaster-analytics",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Premium Football Intelligence Dashboard - Powered by AI",
+    "scripts": {
+        "generate": "python generate_matches.py && python generate_accumulator.py",
+        "serve": "npx serve dist"
+    },
+    "keywords": [
+        "football",
+        "analytics",
+        "betting",
+        "ai",
+        "dashboard"
+    ],
+    "author": "298",
+    "license": "MIT"
+}
