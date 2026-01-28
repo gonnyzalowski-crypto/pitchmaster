@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>298 Analytics | ACCUMULATOR INTELLIGENCE 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-wrapper { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .accumulator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .bet-slip {
+            background: #0a1120;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            position: relative;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .bet-slip:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-blue);
+            box-shadow: 0 25px 60px rgba(0,212,255,0.15);
+        }
+        .slip-header {
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-bottom: 2px dashed rgba(255,255,255,0.1);
+            position: relative;
+        }
+        .slip-header::before, .slip-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            width: 20px;
+            height: 20px;
+            background: #050a12;
+            border-radius: 50%;
+        }
+        .slip-header::before { left: -10px; }
+        .slip-header::after { right: -10px; }
+        .slip-content { padding: 1.5rem; }
+        .selection-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+        .selection-item i { margin-top: 2px; color: #00d4ff; font-size: 0.7rem; }
+        .slip-footer {
+            padding: 1.5rem;
+            background: rgba(0,212,255,0.03);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .financial-row { display: flex; justify-content: space-between; align-items: center; }
+        .odds-badge {
+            background: #00d4ff;
+            color: #000;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.25);
+        }
+        .risk-badge {
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .risk-high { background: rgba(255,77,77,0.1); color: #ff4d4d; border: 1px solid #ff4d4d; }
+        .risk-medium { background: rgba(255,204,0,0.1); color: #ffcc00; border: 1px solid #ffcc00; }
+        .risk-safe { background: rgba(0,255,157,0.1); color: #00ff9d; border: 1px solid #00ff9d; }
+        @media (max-width: 768px) { .accumulator-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg border-bottom border-secondary border-opacity-10 py-3">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <i class="fas fa-wave-square me-2 text-neon-green"></i>
+            <span class="fw-800 text-white tracking-widest" style="font-family: 'Outfit';">298 ANALYTICS</span>
+        </a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item"><a href="index.html" class="nav-link text-white fw-bold">DASHBOARD</a></li>
+                <li class="nav-item"><a href="accumulator.html" class="nav-link text-white fw-bold">ACCU 1</a></li>
+                <li class="nav-item"><a href="acc2.html" class="nav-link text-white fw-bold">ACCU 2</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="page-wrapper">
+    <div class="analysis-terminal mb-5">
+        <div class="terminal-header">
+            <div class="terminal-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+            <span>STRATEGY_ENGINE_V4.0 // ACCUMULATOR INTELLIGENCE 2</span>
+        </div>
+        <div class="terminal-content">
+            <div class="mb-2"><span class="terminal-keyword">ACTION:</span> build_bundle --source acc2.csv</div>
+            <div class="mb-2"><span class="terminal-keyword">SYSTEM:</span> Synchronizing market data and risk variance.</div>
+        </div>
+    </div>
+    <div class="accumulator-grid">
+        <div class="bet-slip">
+            <div class="slip-header d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="text-dim small fw-bold tracking-widest">SAFE_01</div>
+                    <div class="text-white small">10 SELECTIONS</div>
+                </div>
+                <span class="risk-badge risk-medium">Medium</span>
+            </div>
+            <div class="slip-content"><div class="selection-item"><i class="fas fa-check-circle"></i><span>Napoli vs Chelsea - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Paris vs Newcastle - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>PSV vs Bayern Munich - Over 2.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Man City vs Club Brugge - Man City to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Real Madrid vs Shakhtar - Real Madrid to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Inter Milan vs Benfica - Inter Win or Draw</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Borussia Dortmund vs Sevilla - BTTS Yes</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Porto vs Atlético Madrid - Under 3.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Celtic vs RB Leipzig - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Juventus vs Maccabi Haifa - Juventus -1.5 AH</span></div></div>
+            <div class="slip-footer">
+                <div class="financial-row mb-3">
+                    <div>
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">TOTAL ODDS</div>
+                        <div class="odds-badge mt-1">44.18</div>
+                    </div>
+                    <div class="text-end">
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">POTENTIAL RETURN</div>
+                        <div class="h3 fw-800 text-white mt-1 mb-0">$4418</div>
+                        <div class="text-muted small">from $100 stake</div>
+                    </div>
+                </div>
+                <div class="progress" style="height: 4px; background: rgba(255,255,255,0.05);">
+                    <div class="progress-bar bg-info" style="width: 90%"></div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span class="text-dim" style="font-size: 0.6rem;">CONFIDENCE / PROB</span>
+                    <span class="text-cyan fw-bold" style="font-size: 0.6rem;">HIGH</span>
+                </div>
+            </div>
+        </div>
+        <div class="bet-slip">
+            <div class="slip-header d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="text-dim small fw-bold tracking-widest">SAFE_02</div>
+                    <div class="text-white small">10 SELECTIONS</div>
+                </div>
+                <span class="risk-badge risk-medium">Medium</span>
+            </div>
+            <div class="slip-content"><div class="selection-item"><i class="fas fa-check-circle"></i><span>Napoli vs Chelsea - BTTS Yes</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Paris vs Newcastle - BTTS Yes</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>PSV vs Bayern Munich - BTTS Yes</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Man City vs Club Brugge - Man City -1.5 AH</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Real Madrid vs Shakhtar - Real Madrid -1.0 AH</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Barcelona vs Bayern Leverkusen - Barcelona to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>AC Milan vs Salzburg - AC Milan to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Benfica vs PSG - Over 2.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Sevilla vs Man City - Under 3.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Atletico Madrid vs Club Brugge - Atletico to Win</span></div></div>
+            <div class="slip-footer">
+                <div class="financial-row mb-3">
+                    <div>
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">TOTAL ODDS</div>
+                        <div class="odds-badge mt-1">74.45</div>
+                    </div>
+                    <div class="text-end">
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">POTENTIAL RETURN</div>
+                        <div class="h3 fw-800 text-white mt-1 mb-0">$7445</div>
+                        <div class="text-muted small">from $100 stake</div>
+                    </div>
+                </div>
+                <div class="progress" style="height: 4px; background: rgba(255,255,255,0.05);">
+                    <div class="progress-bar bg-info" style="width: 90%"></div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span class="text-dim" style="font-size: 0.6rem;">CONFIDENCE / PROB</span>
+                    <span class="text-cyan fw-bold" style="font-size: 0.6rem;">HIGH</span>
+                </div>
+            </div>
+        </div>
+        <div class="bet-slip">
+            <div class="slip-header d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="text-dim small fw-bold tracking-widest">SAFE_03</div>
+                    <div class="text-white small">10 SELECTIONS</div>
+                </div>
+                <span class="risk-badge risk-medium">Medium</span>
+            </div>
+            <div class="slip-content"><div class="selection-item"><i class="fas fa-check-circle"></i><span>Napoli vs Chelsea - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Paris vs Newcastle - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Man City vs Club Brugge - Man City to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Real Madrid vs Shakhtar - Real Madrid to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Inter Milan vs Benfica - Inter Win or Draw</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Bayern Munich vs Barcelona - Over 2.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Porto vs Atlético Madrid - Under 3.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>PSG vs Juventus - PSG to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Liverpool vs Ajax - Liverpool to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Chelsea vs AC Milan - Chelsea Win or Draw</span></div></div>
+            <div class="slip-footer">
+                <div class="financial-row mb-3">
+                    <div>
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">TOTAL ODDS</div>
+                        <div class="odds-badge mt-1">31.38</div>
+                    </div>
+                    <div class="text-end">
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">POTENTIAL RETURN</div>
+                        <div class="h3 fw-800 text-white mt-1 mb-0">$3138</div>
+                        <div class="text-muted small">from $100 stake</div>
+                    </div>
+                </div>
+                <div class="progress" style="height: 4px; background: rgba(255,255,255,0.05);">
+                    <div class="progress-bar bg-info" style="width: 90%"></div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span class="text-dim" style="font-size: 0.6rem;">CONFIDENCE / PROB</span>
+                    <span class="text-cyan fw-bold" style="font-size: 0.6rem;">HIGH</span>
+                </div>
+            </div>
+        </div>
+        <div class="bet-slip">
+            <div class="slip-header d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="text-dim small fw-bold tracking-widest">SAFE_04</div>
+                    <div class="text-white small">10 SELECTIONS</div>
+                </div>
+                <span class="risk-badge risk-medium">Medium</span>
+            </div>
+            <div class="slip-content"><div class="selection-item"><i class="fas fa-check-circle"></i><span>Napoli vs Chelsea - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Paris vs Newcastle - BTTS Yes</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>PSV vs Bayern Munich - Over 2.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Man City vs Club Brugge - Man City & Over 2.5</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Real Madrid vs Shakhtar - Real Madrid & BTTS Yes</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Inter Milan vs Benfica - Inter to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Borussia Dortmund vs Sevilla - Over 2.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Porto vs Atlético Madrid - Double Chance Porto/Draw</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Celtic vs RB Leipzig - BTTS Yes</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Juventus vs Maccabi Haifa - Juventus to Win to Nil</span></div></div>
+            <div class="slip-footer">
+                <div class="financial-row mb-3">
+                    <div>
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">TOTAL ODDS</div>
+                        <div class="odds-badge mt-1">269.65</div>
+                    </div>
+                    <div class="text-end">
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">POTENTIAL RETURN</div>
+                        <div class="h3 fw-800 text-white mt-1 mb-0">$26965</div>
+                        <div class="text-muted small">from $100 stake</div>
+                    </div>
+                </div>
+                <div class="progress" style="height: 4px; background: rgba(255,255,255,0.05);">
+                    <div class="progress-bar bg-info" style="width: 90%"></div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span class="text-dim" style="font-size: 0.6rem;">CONFIDENCE / PROB</span>
+                    <span class="text-cyan fw-bold" style="font-size: 0.6rem;">HIGH</span>
+                </div>
+            </div>
+        </div>
+        <div class="bet-slip">
+            <div class="slip-header d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="text-dim small fw-bold tracking-widest">SAFE_05</div>
+                    <div class="text-white small">10 SELECTIONS</div>
+                </div>
+                <span class="risk-badge risk-medium">Medium</span>
+            </div>
+            <div class="slip-content"><div class="selection-item"><i class="fas fa-check-circle"></i><span>Napoli vs Chelsea - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Paris vs Newcastle - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>PSV vs Bayern Munich - BTTS Yes</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Man City vs Club Brugge - Man City to Win</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Real Madrid vs Shakhtar - Real Madrid -1.0 AH</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Inter Milan vs Benfica - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Borussia Dortmund vs Sevilla - Over 1.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Porto vs Atlético Madrid - Under 4.5 Goals</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Celtic vs RB Leipzig - Celtic +1.5 AH</span></div><div class="selection-item"><i class="fas fa-check-circle"></i><span>Juventus vs Maccabi Haifa - Juventus to Win</span></div></div>
+            <div class="slip-footer">
+                <div class="financial-row mb-3">
+                    <div>
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">TOTAL ODDS</div>
+                        <div class="odds-badge mt-1">30.95</div>
+                    </div>
+                    <div class="text-end">
+                        <div class="text-dim small uppercase fw-bold tracking-widest" style="font-size: 0.6rem;">POTENTIAL RETURN</div>
+                        <div class="h3 fw-800 text-white mt-1 mb-0">$3095</div>
+                        <div class="text-muted small">from $100 stake</div>
+                    </div>
+                </div>
+                <div class="progress" style="height: 4px; background: rgba(255,255,255,0.05);">
+                    <div class="progress-bar bg-info" style="width: 90%"></div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span class="text-dim" style="font-size: 0.6rem;">CONFIDENCE / PROB</span>
+                    <span class="text-cyan fw-bold" style="font-size: 0.6rem;">HIGH</span>
+                </div>
+            </div>
+        </div></div>
+</div>
+</body>
+</html>
